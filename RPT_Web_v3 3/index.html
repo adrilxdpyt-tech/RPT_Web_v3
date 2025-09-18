@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RPT — Recompensa para la Transparencia</title>
+  <style>
+    :root{
+      --bg:#0b132b; --fg:#ffffff; --muted:#a9b1be; --pri:#3a86ff; --pri-2:#6fa6ff; --card:#111a34; --ok:#22c55e;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;background:linear-gradient(180deg,#0b132b 0%,#0f1a3d 60%,#0b132b 100%);color:var(--fg);}
+    a{color:var(--pri)}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:#0b132bcc;backdrop-filter:blur(10px);border-bottom:1px solid #1f2a4c;z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--pri),#7c3aed);display:grid;place-items:center;color:white;font-weight:900}
+    .nav a.btn{padding:10px 14px;border:1px solid #25408f;border-radius:12px;text-decoration:none}
+    .hero{padding:64px 24px 28px}
+    .hero h1{font-size:clamp(28px,4vw,44px);margin:0 0 10px}
+    .hero p{color:var(--muted);font-size:clamp(15px,2.5vw,18px);max-width:820px}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid #28458f;background:#10214a;color:white;text-decoration:none}
+    .btn.primary{background:linear-gradient(135deg,var(--pri),var(--pri-2));border-color:#2f54a5}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 12;background:var(--card);border:1px solid #1f2a4c;border-radius:16px;padding:18px}
+    @media(min-width:900px){.span6{grid-column:span 6}.span4{grid-column:span 4}}
+    h2{font-size:clamp(22px,3vw,28px);margin:0 0 8px}
+    h3{font-size:18px;margin:14px 0 8px}
+    .muted{color:var(--muted)}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap}
+    .kpi{flex:1 1 180px;background:#0d1833;border:1px solid #1f2a4c;border-radius:12px;padding:12px}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid #28458f;background:#0e214d;font-size:12px}
+    .table{width:100%;border-collapse:collapse;margin-top:8px}
+    .table th,.table td{padding:10px;border-bottom:1px solid #243258;text-align:left;font-size:14px}
+    .pill{padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid #3757a8;background:#0b1f49;}
+    .ok{border-color:#2e7d32;background:#0f2d1b}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+    input,select{background:#0c1a36;color:white;border:1px solid #28458f;border-radius:10px;padding:10px}
+    footer{margin:40px 0 20px;color:#9babc5;text-align:center;font-size:13px}
+    .list{display:grid;gap:8px}
+    .list li{list-style:none;}
+    .tag{display:inline-block;margin:4px 6px 0 0;border:1px solid #28458f;background:#0c1f46;color:#dbe6ff;padding:4px 8px;border-radius:999px;font-size:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><div class="logo">R</div> RPT — Recompensa para la Transparencia</div>
+      <nav>
+        <a class="btn" href="#descripcion">Descripción</a>
+        <a class="btn" href="#perfil">Crear perfil</a>
+        <a class="btn" href="#capacitacion">Capacitación</a>
+        <a class="btn" href="#como-funciona">Cómo funciona</a>
+        <a class="btn" href="#gastos">Gastos</a>
+        <a class="btn" href="#reglas">Reglas y Fuentes</a>
+        <a class="btn primary" href="#publicar">Panel rápido</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="wrap hero" id="descripcion">
+    <span class="badge">Producto web — MVP</span>
+    <h1>RPT — Recompensa para la Transparencia</h1>
+    <p>Esta página web se ha creado con el fin de **registrar las compras y servicios** de las instituciones educativas como **evidencias públicas**. La comunidad puede **buscar, filtrar y descargar** la información. El problema que abordamos es la **corrupción**, cuando los recursos no llegan al aula y se rompe la confianza. RPT estandariza la publicación de cada gasto con fecha, rubro, monto, proveedor y evidencia.</p>
+    <div class="cta">
+      <a class="btn primary" href="#perfil">Crear perfil de institución</a>
+      <a class="btn" href="#gastos">Ver gastos (demo)</a>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="muted">Objetivo</div><div><strong>100%</strong> gastos con evidencia</div></div>
+      <div class="kpi"><div class="muted">Indicador</div><div><strong>7 días</strong> para publicar cada gasto</div></div>
+      <div class="kpi"><div class="muted">Reconocimiento</div><div><span class="pill ok">RPT Oro</span></div></div>
+    </div>
+  </section>
+
+  <section class="wrap card" id="perfil">
+    <h2>Crear un nuevo perfil (solicitud supervisada)</h2>
+    <p class="muted">Como en “Innova Family”: puedes pedir acceso como **otra institución**. Un supervisor valida la solicitud antes de habilitar el panel.</p>
+    <ol>
+      <li>Llena el formulario de solicitud (Institución, código modular, distrito/UGEL, correo del directivo).</li>
+      <li>Adjunta documentos de respaldo (resolución de dirección, etc.).</li>
+      <li>Recibirás un correo cuando tu perfil sea **aprobado**.</li>
+    </ol>
+    <a class="btn primary" href="#">Enviar solicitud</a>
+  </section>
+
+  <section class="wrap grid" id="capacitacion">
+    <article class="card span6">
+      <h2>Capacitación para directivos</h2>
+      <p class="muted">Sesiones breves: registro de gastos, subida de evidencia, buenas prácticas y respuesta a observaciones.</p>
+    </article>
+    <article class="card span6">
+      <h2>Materiales de apoyo</h2>
+      <p class="muted">Guías PDF y videos tutoriales con ejemplos reales. Checklists descargables.</p>
+    </article>
+  </section>
+
+  <section class="wrap grid" id="como-funciona">
+    <article class="card span4">
+      <h3>1) Directivo inicia sesión</h3>
+      <p class="muted">Correo institucional y verificación por email.</p>
+    </article>
+    <article class="card span4">
+      <h3>2) Registra el gasto</h3>
+      <p class="muted">Monto, proveedor, rubro y <strong>evidencia</strong> (PDF/imagen).</p>
+    </article>
+    <article class="card span4">
+      <h3>3) Publicación abierta</h3>
+      <p class="muted">La ficha aparece en la página del colegio. La comunidad puede buscar y descargar.</p>
+    </article>
+  </section>
+
+  <section class="wrap card" id="gastos">
+    <h2>Gastos públicos (demo)</h2>
+    <p class="muted">Este es un ejemplo. Si conectas Google Sheets (CSV), la tabla se llena sola.</p>
+    <div class="filters">
+      <input id="q" placeholder="Buscar institución o rubro…" />
+      <select id="rubro">
+        <option value="">Todos los rubros</option>
+        <option>Mantenimiento</option>
+        <option>Materiales</option>
+        <option>Servicios</option>
+      </select>
+      <select id="estado">
+        <option value="">Todos</option>
+        <option>Verificado</option>
+        <option>Pendiente</option>
+      </select>
+    </div>
+    <table class="table" id="tabla">
+      <thead>
+        <tr>
+          <th>Fecha</th><th>Institución</th><th>Rubro</th><th>Monto (PEN)</th><th>Proveedor</th><th>Evidencia</th><th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-03-05</td><td>IE 7089 San Martín</td><td>Mantenimiento</td><td>2000.00</td><td>Servicios ABC</td>
+          <td><a href="#">PDF</a></td><td><span class="pill ok">Verificado</span></td>
+        </tr>
+        <tr>
+          <td>2025-04-10</td><td>Colegio Nacional 123</td><td>Materiales</td><td>1500.50</td><td>Librería La Paz</td>
+          <td><a href="#">Foto</a></td><td><span class="pill">Pendiente</span></td>
+        </tr>
+        <tr>
+          <td>2025-05-18</td><td>IE 4102 Túpac Amaru</td><td>Servicios</td><td>980.00</td><td>Proveedor XYZ</td>
+          <td><a href="#">PDF</a></td><td><span class="pill ok">Verificado</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="wrap card" id="publicar">
+    <h2>Publicar gasto (versión rápida sin código)</h2>
+    <p class="muted">Panel rápido con <strong>Google Forms + Sheets</strong>. Conecta tu CSV y listo.</p>
+    <ol>
+      <li>Crea un <strong>Google Form</strong> (Institución, UGEL, Fecha, Rubro, Monto, Proveedor, Nº comprobante, Descripción, <strong>Subida de archivo</strong>).</li>
+      <li>Respuestas → **Crear hoja**. Esa será tu base.</li>
+      <li>En la hoja: **Archivo → Publicar en la web → CSV**. Copia el enlace.</li>
+      <li>En este HTML, pega la URL en <code>SHEET_CSV_URL</code> (ver script).</li>
+      <li>Opcional: inserta el Form con un <code>&lt;iframe&gt;</code> aquí mismo.</li>
+    </ol>
+    <div class="cta">
+      <a class="btn" target="_blank" href="https://forms.google.com">Abrir Google Forms</a>
+      <a class="btn" target="_blank" href="https://sheets.google.com">Abrir Google Sheets</a>
+    </div>
+  </section>
+
+  <section class="wrap grid" id="reglas">
+    <article class="card span6">
+      <h3>Reglas RPT (insignias)</h3>
+      <ul class="list">
+        <li><strong>Bronce:</strong> 80% de gastos publicados con evidencia al mes.</li>
+        <li><strong>Plata:</strong> 95% publicados + evidencia validada.</li>
+        <li><strong>Oro:</strong> 100% publicados en 7 días hábiles.</li>
+      </ul>
+    </article>
+    <article class="card span6">
+      <h3>Fuentes</h3>
+      <ul class="list">
+        <li>Contraloría — Informes y guías de control.</li>
+        <li>MINEDU — Programa de Mantenimiento de Locales.</li>
+        <li>OSCE — Normativa y buenas prácticas de contratación.</li>
+        <li>Defensoría del Pueblo — Servicios públicos en educación.</li>
+        <li>UNESCO — Informe GEM sobre gobernanza.</li>
+      </ul>
+    </article>
+  </section>
+
+  <footer class="wrap">RPT — Recompensa para la Transparencia · Datos abiertos · v0.3</footer>
+
+  <script>
+    // Filtros tabla demo
+    const q = document.getElementById('q');
+    const rubro = document.getElementById('rubro');
+    const estado = document.getElementById('estado');
+    const tbody = document.querySelector('#tabla tbody');
+    function filtrar(){
+      const txt = (q.value||'').toLowerCase();
+      const r = rubro.value;
+      const e = estado.value;
+      for(const tr of tbody.querySelectorAll('tr')){
+        const tds = tr.querySelectorAll('td');
+        const inst = tds[1].textContent.toLowerCase();
+        const rub = tds[2].textContent;
+        const est = tds[6].textContent.trim();
+        const passTxt = !txt || inst.includes(txt) || rub.toLowerCase().includes(txt);
+        const passRubro = !r || rub === r;
+        const passEstado = !e || est === e;
+        tr.style.display = (passTxt && passRubro && passEstado) ? '' : 'none';
+      }
+    }
+    q.addEventListener('input', filtrar);
+    rubro.addEventListener('change', filtrar);
+    estado.addEventListener('change', filtrar);
+
+    // Conectar Google Sheets (CSV)
+    const SHEET_CSV_URL = null; // 'https://docs.google.com/spreadsheets/d/e/.../pub?output=csv'
+    async function loadCSV(){
+      if(!SHEET_CSV_URL) return;
+      const res = await fetch(SHEET_CSV_URL);
+      const txt = await res.text();
+      const rows = txt.split(/\r?\n/).map(r=>r.split(','));
+      tbody.innerHTML = '';
+      rows.slice(1).forEach(r=>{
+        if(r.length < 7) return;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td>
+          <td><a href="${r[5]}" target="_blank">Evidencia</a></td><td><span class="pill">${r[6]}</span></td>`;
+        tbody.appendChild(tr);
+      });
+    }
+    loadCSV();
+  </script>
+</body>
+</html>
